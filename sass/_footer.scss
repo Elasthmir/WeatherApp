@@ -1,0 +1,10 @@
+footer {
+    @include header-footer(100%, 12px, $light-color, $dark-color, center);
+    p {
+        letter-spacing: 1px;
+        span{
+            color: $wsb-color;
+            font-weight: bold;
+        }        
+    }
+}

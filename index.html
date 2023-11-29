@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikacja Pogodowa</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Aplikacja Pogodowa</h1>
+    </header>
+    <main>
+        <section class="app_top">
+            <div class="inputClass">
+                <input type="text" placeholder="Podaj nazwe miasta">
+            </div>
+            <div class="button">
+                <button>Sprawdź pogode!</button>
+            </div>
+            <p class="error"></p>
+        </section>
+        <div class="townResults">
+            <div id="results"></div>
+        </div>
+        <section class="app_bottom">
+            <h2 class="city"></h2>
+            <div class="temp_box">
+                <div class="temp_img">
+                    <img src="" alt="" />
+                    <p class="tempIRL"></p>
+                    <p class="temp"></p>
+                </div>
+                <p class="temp_description"></p>
+            </div>
+
+            <p>Temperatura odczuwalna: <span class="feels_like"></span></p>
+            <p>Ciśnienie: <span class="preassure"></span></p>
+            <p>Wilgotność: <span class="humiditi"></span></p>
+            <p>Prędkość wiatru: <span class="wind_speed"></span></p>
+            <p>Zachmurzenie: <span class="clouds"></span></p>
+
+        </section>
+        <section class="air_pollution">
+            <h3>Informacja o zanieczyszczeniu powietrza</h3>
+            <div class="pollution">
+                <img src="./img/icon.png" alt="" id="img_pollution">
+                <p>
+                    <span class="pm25"> </span> μg/m<sup>3</sup>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Projekt <span> WSB Merito</span> 2023</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./main.js">
+
+    </script>
+
+</body>
+
+</html>
