@@ -29,6 +29,10 @@ const apiUnits1 = '&units=metric';
 const apiLang1 = '&lang=pl';
 
 
+let cordsArrayLat = [];
+let cordsArrayLon = [];
+
+
 
 function getWeather() {
 
@@ -38,18 +42,44 @@ function getWeather() {
     axios.get(url).then(response => {
 
         console.log(response);
-        if(response.data.results == undefined){
+        if (response.data.results == undefined) {
 
+            townResults.textContent = "Nie ma takiego miasta!!!"
             console.log('error')
 
-        } else{
+        } else {
             response.data.results.forEach(element => {
+                if (element.name !== apiCity) { return; }
+                if (element.admin3 == undefined) { return; }
+
+                cordsArrayLat.push(element.latitude);
+                cordsArrayLon.push(element.longitude);
+
+            })
+            arrayCounter = 0
+            response.data.results.forEach(element => {
+
                 if (element.name !== apiCity) { return; }
                 // if (element.country_code !== "PL") { return; }
                 if (element.admin3 == undefined) { return; }
                 // console.log(element);
-                townResults.innerHTML += `<div class='eachTown'><span>${element.name}<br/>${element.admin3}<br/>${element.admin2}<br/>${element.admin1}</span></div>`
+                townResults.innerHTML += `<div class='eachTown'><span class='nameTown'>${element.name}<br/>${element.admin3}<br/>${element.admin2}<br/>${element.admin1}</span></div>`
+
+
+
+
+
             });
+            const nameTown = document.querySelectorAll('.eachTown');
+            console.log(nameTown.length)
+            for (let index = 0; index <= nameTown.length; index++) {
+                nameTown[index].addEventListener("click", function () {
+
+                    console.log(cordsArrayLat[index], cordsArrayLon[index])
+
+                })
+
+            }
         }
         // townResults.textContent = response.data.results[0].id
 
