@@ -2,10 +2,12 @@
 <html lang="pl">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikacja Pogodowa</title>
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
@@ -13,32 +15,55 @@
     <header>
         <h1>Aplikacja Pogodowa</h1>
     </header>
+    <section class="app_top">
+        <div class="inputClass">
+            <input type="text" placeholder="Podaj nazwe miasta">
+        </div>
+        <div class="button">
+            <button>Sprawdź pogode!</button>
+        </div>
+        <p class="error"></p>
+    </section>
     <main>
-        <section class="app_top">
-            <div class="inputClass">
-                <input type="text" placeholder="Podaj nazwe miasta">
+
+        <div class="townResults" id="townResults">
+            <div id="results">
+
             </div>
-            <div class="button">
-                <button>Sprawdź pogode!</button>
+        </div>
+        <div class="fadeInElements">
+            <div class="parent">
+                <div class="div1">
+
+
+                    <span class="feels_like"></span>
+                    <span class="feels_likeRLY"></span>
+                    <span class="cloudsCover"></span>
+                </div>
+                <div class="div2"></div>
+                <div class="div3"></div>
+                <div class="div4"></div>
+                <div class="div5"> </div>
+                <div class="div6"></div>
+                <div class="div7"></div>
+                <div class="div8"></div>
+                <div class="div9"></div>
             </div>
-            <p class="error"></p>
-        </section>
-        <div class="townResults">
-            <div id="results"></div>
         </div>
         <section class="app_bottom">
             <h2 class="city"></h2>
             <div class="temp_box">
                 <div class="temp_img">
-                    <img src="" alt="" />
+
                     <p class="tempIRL"></p>
                     <p class="temp"></p>
                 </div>
                 <p class="temp_description"></p>
             </div>
 
-            <p>Temperatura odczuwalna: <span class="feels_like"></span></p>
-            <p>Ciśnienie: <span class="preassure"></span></p>
+            <!--
+            
+            <p>Ciśnienie: <span class="preassure"></span></p>   
             <p>Wilgotność: <span class="humiditi"></span></p>
             <p>Prędkość wiatru: <span class="wind_speed"></span></p>
             <p>Zachmurzenie: <span class="clouds"></span></p>
@@ -53,13 +78,14 @@
                 </p>
             </div>
         </section>
-
+        -->
     </main>
 
     <footer>
         <p>Projekt <span> WSB Merito</span> 2023</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
     <script src="./main.js">
 
     </script>

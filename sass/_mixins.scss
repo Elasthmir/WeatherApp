@@ -7,3 +7,14 @@
     text-align: $align;
 
 }
+
+
+@mixin gridElementsCenter($width, $padd, $textColor, $bg-color, $align) {
+
+    width: $width;
+    padding: $padd;
+    color: $textColor;
+    background-color: $bg-color;
+    text-align: $align;
+
+}
