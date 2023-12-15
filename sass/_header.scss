@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  //  font-family: 'Poppins', sans-serif;
     color:white;
 }
 
@@ -28,4 +28,5 @@ body {
 
 header {
     @include header-footer(100%, 25px, black, transparent, center);
+    font-family: 'Poppins', sans-serif;
 }
