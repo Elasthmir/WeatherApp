@@ -2,40 +2,92 @@
                             @import url('https://fonts.cdnfonts.com/css/br-segma');
   
 
-h1 {
 
-    font-size: 128px;
 
-}
+                            h1 {
+
+                                font-size: 128px;
+                            
+                            }   
 .townResults{
-    width: 90vw;
-    display: flex;
-    height: 50%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    
-    
-}
+    width: 101%;
+    // max-width: 800px;
+    height: 400px;
+    position: relative;
+    overflow: hidden; /* <===  */
+    }
 .eachTown{
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
     padding: 20px;
     cursor: pointer;
-    width: 300px;
     border-left: 1px white solid;
     transition:  all .2s ease-in-out;
-    
+    width: 100%;
+
+    top:-10%;
+    height: 450px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: all 0.5s;
+}
+.label{
+
+    font-size: 10px;
+    font-weight: 100;
+
 }
 .eachTown:hover{
-    scale: 1.1;
+    scale: 1.2;
 }
 .label{
 
     font-size: 16px;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.left-btn{
+    position: fixed;
+    left: 210px;
+    top:50%;
+}
+
+.right-btn{
+    position: fixed;
+    top:50%;
+    right: 210px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 input{
     
     border: none;
@@ -48,17 +100,53 @@ input{
     background-color: transparent;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .app_top{
+
     display: flex;
     margin: 20px;
-    position: absolute;
+    position: relative;
     bottom: 50%;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .app_bottom{
     font-size: 30px;
@@ -81,7 +169,7 @@ input{
 }
 
 .fadeOutElements{
-    animation: fadeOut 1s linear forwards;
+    animation: fadeOut .1s linear forwards;
 }
 
 @keyframes fadeOut {
@@ -91,7 +179,7 @@ input{
 
     100%{
         opacity: 0;
-        //display: none;
+        display: none;
     }
 }
 
@@ -128,7 +216,7 @@ input{
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(8, 1fr);
     opacity: 0;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 10;
     
     }
@@ -150,7 +238,7 @@ input{
             display: flex; justify-content: center; text-align: center; align-items: center; &:hover{
                 
                     transition:  all .2s ease-in-out;
-                    scale: 1.1;
+                   // scale: 1.01;
                     opacity: 1;
                     z-index: 10000;
                     border: white solid 5px;
@@ -165,7 +253,7 @@ input{
 
 .values{
     font-weight: 900;
-    font-size: 36px;
+    font-size: 26px;
     
     
 }
@@ -221,44 +309,79 @@ button{
         background: rgb(98, 0, 238);
         box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
     }
-    margin: 50px;
+    margin: 10px;
 }
 
 
 
+@media screen and (max-width: 1450px) {
 
+    h1{
+        font-size: 54px;
+    }
+
+
+}
 
 
 
 @media screen and (max-width: 880px) {
-    body{
-         max-width: 100%;
-         max-height: 100%;
-    }
-    h1{
-        font-size: 64px;
-    }
-    .parent{
-      display: flex;
-      flex-direction: column;
-      //column-gap: 50px;
-      //row-gap: 150px;
-    }
-    .app_top{
-    
- 
-        display: block;
+    .back{
+        position: relative;
+        bottom: 20px;
         
-        
-    
     }
-    @for $i from 1 through 8 {
-        .div#{$i} {
+   
+   h1{
+       font-size: 64px;
+   }
+   .parent{
+     display: flex;
+     flex-direction: column;
 
-            border: none;
-            //padding: 50px;
-            
+     //column-gap: 50px;
+     //row-gap: 150px;
+   }
+   .app_top{
+   
 
-        }}
+       display: block;
+       
+       
+   
+   }
+   .townResults{
+    width: 180px;
+   }
+   .eachTown{
+    width: 170px;
+   }
+   .left-btn{
+    left: -10px;
+   }
+   .right-btn{
+    right: -10px;
+   }
+   @for $i from 1 through 8 {
+       .div#{$i} {
+            opacity: 1;
+           border-bottom: 5px white; 
+           border: none;
+           //padding: 50px;
+           padding-top: 30px;
+           padding-bottom: 30px;
+       }}
     
   }
+
+
+
+
+@media screen and (max-width: 1100px){
+    .left-btn{
+        left: -10px;
+       }
+       .right-btn{
+        right: -10px;
+       }
+}

@@ -7,6 +7,7 @@
 }
 
 body {
+  font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -18,7 +19,7 @@ body {
         hsl(18deg 100% 56%) 50%,
         hsl(0deg 100% 53%) 99%
     );
-
+    place-items: center;
     background-repeat: no-repeat;
 -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */

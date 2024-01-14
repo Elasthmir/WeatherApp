@@ -48,7 +48,8 @@ const div9 = document.querySelector(".div9");
 
 
 function getWeather() {
-
+    townResults.innerHTML += `<button class="left-btn"><i class="arrow" style="font-size: 20px;">&#8656;</i></button>
+    <button class="right-btn"><i class="arrow" style="font-size: 20px;">&#8658;</i></button>`
     const apiCity = input.value;
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${apiCity}&count=10&language=en&format=json`;
 
@@ -75,6 +76,7 @@ function getWeather() {
             arrayCounter = 0
             response.data.results.forEach(element => {
                 input.classList.add("fadeOutElements")
+
                 button.classList.add("fadeOutElements")
                 //  parent.style.display = 'none'
                 if (element.name !== apiCity) { return; }
@@ -109,106 +111,58 @@ function getWeather() {
                 */
 
 
-                townResults.innerHTML += `<div class='eachTown'><span class='nameTown'><span class = 'label'>miejscowowość: </span><br/>${element.name}<br/><span class = 'label'>gmina: </span><br/>${element.admin3}<br/><span class = 'label'>powiat: </span><br/>${element.admin2}<br/><span class = 'label'>województwo: </span><br/>${element.admin1}</span><br/><span class = 'label'>Państwo: </span><br/>${element.country}</span></div>`
+                townResults.innerHTML += `  <div class='eachTown  slide' ><span class='nameTown'><span class = 'label'>miejscowowość: </span><br/>${element.name}<br/><span class = 'label'>gmina: </span><br/>${element.admin3}<br/><span class = 'label'>powiat: </span><br/>${element.admin2}<br/><span class = 'label'>województwo: </span><br/>${element.admin1}<br/><span class = 'label'>Państwo: </span><br/>${element.country}</span></span></div>`
 
-                if (cordsArrayLat.length >= 3) {
+                const slides = document.querySelectorAll(".slide");
 
-                    const $menu = document.querySelector('.townResults');
-                    const $items = document.querySelectorAll('.eachTown');
-                    let itemWidth = $items[0].clientWidth;
-                    let wrapWidth = $items.length * itemWidth;
+                // loop through slides and set each slides translateX
+                slides.forEach((slide, indx) => {
+                    slide.style.transform = `translateX(${indx * 100}%)`;
+                });
 
-                    let scrollY = 0;
-                    let y = 0;
+                // select next slide button
+                const nextSlide = document.querySelector(".right-btn");
 
+                // current slide counter
+                let curSlide = 0;
+                // maximum number of slides
+                let maxSlide = slides.length - 1;
 
+                // add event listener and navigation functionality
+                nextSlide.addEventListener("click", function () {
+                    // check if current slide is the last and reset current slide
+                    if (curSlide === maxSlide) {
+                        curSlide = 0;
+                    } else {
+                        curSlide++;
+                    }
 
-
-                    const lerp = (v0, v1, t) => {
-                        return v0 * (1 - t) + v1 * t;
-                    };
-
-                    const Ja = (t, e) => {
-                        return t || t === 0 ? e(t) : e;
-                    };
-                    const wrap = (e, t, r) => {
-                        const i = t - e;
-                        return Ja(r, function (t) {
-                            return (i + (t - e) % i) % i + e;
-                        });
-                    };
-
-
-
-
-
-
-                    const dispose = (scroll) => {
-                        $items.forEach((el, i) => {
-                            const x = `${i * itemWidth + scroll}`;
-                            const s = wrap(-itemWidth * 16, (wrapWidth - itemWidth) * 2.4, parseInt(x));
-                            el.style.transform = `translate(${s * 1.5}px, 0px)`;
-                        });
-                    };
-                    dispose(0);
-
-
-                    let touchStart = 0;
-                    let touchX = 0;
-                    let isDragging = false;
-                    const handleTouchStart = (e) => {
-                        touchStart = e.clientX || e.touches[0].clientX;
-                        isDragging = true;
-                    };
-                    const handleTouchMove = (e) => {
-                        if (!isDragging) return;
-                        touchX = e.clientX || e.touches[0].clientX;
-                        scrollY += (touchX - touchStart);
-                        touchStart = touchX;
-                    };
-                    const handleTouchEnd = () => {
-                        isDragging = false;
-                    };
-
-
-
-
-
-
-                    $menu.addEventListener('touchstart', handleTouchStart);
-                    $menu.addEventListener('touchmove', handleTouchMove);
-                    $menu.addEventListener('touchend', handleTouchEnd);
-
-                    $menu.addEventListener('mousedown', handleTouchStart);
-                    $menu.addEventListener('mousemove', handleTouchMove);
-                    $menu.addEventListener('mouseleave', handleTouchEnd);
-                    $menu.addEventListener('mouseup', handleTouchEnd);
-
-                    $menu.addEventListener('selectstart', () => { return false; });
-
-
-
-
-
-
-                    window.addEventListener('resize', () => {
-                        itemWidth = $items[0].clientWidth;
-                        wrapWidth = $items.length * itemWidth;
+                    //   move slide by -100%
+                    slides.forEach((slide, indx) => {
+                        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
                     });
+                });
+
+                // select next slide button
+                const prevSlide = document.querySelector(".left-btn");
+
+                // add event listener and navigation functionality
+                prevSlide.addEventListener("click", function () {
+                    // check if current slide is the first and reset current slide to last
+                    if (curSlide === 0) {
+                        curSlide = maxSlide;
+                    } else {
+                        curSlide--;
+                    }
+
+                    //   move slide by 100%
+                    slides.forEach((slide, indx) => {
+                        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+                    });
+                });
 
 
 
-
-
-                    const render = () => {
-                        requestAnimationFrame(render);
-                        y = lerp(y, scrollY, 0.1);
-                        dispose(y);
-                    };
-                    render();
-
-
-                }
             });
             const nameTown = document.querySelectorAll('.eachTown');
             //console.log(nameTown.length)
